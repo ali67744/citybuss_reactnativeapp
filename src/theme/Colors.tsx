@@ -1,0 +1,40 @@
+
+
+export default {
+    Tertiary:"#48BEB6",
+    primary: "#303A8E",
+    primaryLight: "#216F73",
+    white: "#ffffff",
+    dark: "#0A0707",
+    yellow:'#F8B92E',
+    black: '#000000',
+    blue: "#0090E6",
+    orange: "#F69734",
+    light_gray: "#eee",
+    light_dark_gray: "#3C3C3C",
+    chatBubbleLeft: "#EDEEF0",
+    transparent: "transparent",
+    brown: "#3C3C3C",
+    pink: "#E43772",
+    ddark: "#666666",
+    pink_dark: "#E04957",
+    red:"#FF0000",
+    green: "#96D117",
+    light_grey:'#707070',
+    loginpage_usegray:'#9B9B9B',
+    pindotscolor:'#F4A535',
+    genderSelectioncolor:'#ABB1C0',
+    backgroundColor: '#fff',
+    parrotGreenColor: '#7b9c33',
+    darkGreenColor: '#245e46',
+    lemonColor: '#D6801E',
+    Color1: 'rgba(22, 22, 22, 0.1)',
+    kulfa:'#AFE1AF',
+    mediumGray:'#C4C4C4',
+    buttonRed:'#EB5757',
+    borderGray:'#DDDDDD',
+    darkGray:'#727272',
+    gray:'#ABABAB'
+
+
+}
