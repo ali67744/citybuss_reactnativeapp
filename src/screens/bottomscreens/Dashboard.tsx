@@ -5,6 +5,7 @@ import TextView from '../../components/TextView';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../../theme/Colors';
 import {connect, useDispatch, useSelector} from 'react-redux';
@@ -34,17 +35,23 @@ const Dashboard=()=>{
             name:'Old Tickets',
             icon:'data-thresholding'
         },
+       
         {
-            id:5,
-            name:'Logout',
-            icon:'exit-outline'
+            id:7,
+            name:'Earnings',
+            icon:'dollar'
         }
         ,
         {
             id:6,
             name:'Send Parcel',
             icon:'cash-outline'
-        }
+        },
+        {
+            id:5,
+            name:'Logout',
+            icon:'exit-outline'
+        },
     ])
     const dispatcher = useDispatch();
 console.log("user", userData?.UserData)
@@ -88,6 +95,11 @@ const handleNavigation=(id)=>{
             navigation.navigate('SendParcel',{params:id})
             break;
         }
+        case  7:{
+            
+            navigation.navigate('Earnings',{params:id})
+            break;
+        }
     }
 }
     const renderItem = ({ item }) => {
@@ -99,6 +111,8 @@ const handleNavigation=(id)=>{
            {item?.id==6|| item?.id==5?
            <Ionicons size={50} color={Colors.primary} name={item?.icon}/>
 
+           : item?.id==7 ?
+           <FontAwesome size={50} color={Colors.primary} name={item?.icon}/>
            :
            <MaterialIcons size={50} color={Colors.primary} name={item?.icon}/>
            }

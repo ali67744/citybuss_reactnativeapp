@@ -470,6 +470,56 @@ export const Cashout = async (currency,price,receiver_form_id) => {
   return promise;
 };
 
+export const GetTripEarningsByDate = async (user_id,user_type,date,africa=false) => {
+  const promise = new Promise((resolve, reject) => {
+    NetInfo.fetch()
+      .then(state => {
+        console.log('Connection type', state.type);
+        console.log('Is connected?', state.isConnected);
+        if (!state.isConnected) {
+          Alert.alert('Stop!', 'Please Check your Internet');
+
+          reject();
+          return;
+        }
+        
+        var data = new FormData();
+        
+        data.append('user_id',user_id );
+        data.append('user_type',user_type );
+        data.append('date',date );
+
+        log("==>data",data)
+        
+        
+        var requestOptions:any = {
+          method: 'POST',
+          body: data,
+          redirect: 'follow',
+        };
+        const key=africa?'Trip_Earnings_By_DateSA':'Trip_Earnings_By_Date'
+        log("==>url",baseUrl+key)
+        fetch(baseUrl+key, requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            console.log("result",result)
+            resolve(JSON.parse(result));
+          })
+          .catch(error => {
+            console.log("error",error)
+            reject(error);
+          });
+
+      })
+      .catch(function (error) {
+        Alert.alert('Stop!', 'Fetch data Failed!');
+        reject();
+      });
+      
+  });
+  return promise;
+};
+
 
 
 const postService = (requestOptions) => {

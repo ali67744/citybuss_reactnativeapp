@@ -28,6 +28,7 @@ import SendParcel from '../screens/sendparcel/SendParcel';
 import SendParcelDetail from '../screens/sendparcel/SendParcelDetail';
 import OldTickets from '../screens/oldtickets/OldTickets';
 import CustomerSummaryList from '../screens/customersummary/CustomerSummaryList';
+import Earnings from '../screens/earnings/Earnings';
 
 
 
@@ -55,6 +56,7 @@ import CustomerSummaryList from '../screens/customersummary/CustomerSummaryList'
            <Stack.Screen name="SendParcelDetail" component={SendParcelDetail} options={options} />
            <Stack.Screen name="OldTickets" component={OldTickets} options={options} />
            <Stack.Screen name="CustomerSummaryList" component={CustomerSummaryList} options={options} />
+           <Stack.Screen name="Earnings" component={Earnings} options={options} />
         
 
          </Stack.Navigator>
