@@ -139,6 +139,7 @@ const _closehandler =
                 </View>
               </View>
                <FlatList
+               style={{height:height/1.5}}
         data={sortingTrue==false?data:data.sort((a, b) => type==2? a.StationName.localeCompare(b.StationName) : a.localeCompare(b) )}
         renderItem={({ item, index, separators }) => {
         return <Pressable 

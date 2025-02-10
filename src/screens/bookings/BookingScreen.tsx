@@ -94,17 +94,38 @@ const BookingScreen = ({route}) => {
       setCitys(citys2);
     }
   }, []);
+  function getAvailableSeats(seatsData, capacity) {
+    log("==> capacity",capacity)
 
-  const transformSeats = data => {
-    return Object.keys(data[0])
-      .filter(key => key.startsWith('s') && data[0][key] === 'available') // Filter only seat keys that are available
-      .map(key => key.slice(1)); // Convert keys to integers
+    let availableSeats = [];
+
+    for (let i = 1; i <= capacity; i++) {
+        let seatKey = `s${i}`;
+        if (seatsData[seatKey] === "available") {
+            availableSeats.push(i);
+        }
+    }
+    log("==> availableSeats",availableSeats)
+
+    return availableSeats;
+}
+  const transformSeats = (capacity,seatsData) => {
+    log("==> transformSeats",capacity)
+    const availableSeats = Object.keys(seatsData)
+        .filter(key => key.startsWith('s') && seatsData[key] === "available")
+        .map(key => parseInt(key.replace('s', ''), 10))
+        .sort((a, b) => a - b);
+
+    return availableSeats.slice(0, Math.min(capacity, availableSeats.length)); // Ensure it doesn't exceed available seats
+  
   };
   const getSeats = async () => {
     setLoading(true);
     let res = await GetSeats(params.schedule_id);
     let parser = JSON.parse(res);
-    let temp = transformSeats(parser?.seats);
+    log("Seats: " , parser?.seats);
+    let temp=getAvailableSeats(parser?.seats[0],Number(params?.capacity??0))
+    // let temp = transformSeats(Number(params?.capacity??0),parser?.seats[0]);
     setFormData({...formData, seatno: temp[0]});
     setSeats(temp);
     log('==>res', temp);
@@ -120,14 +141,8 @@ const BookingScreen = ({route}) => {
     }else if(formData.contactnumber==''){
       Toast.show({type: 'error', text1:"Please enter Contact Number"})
       return 
-    }else if(formData.optn==''){
-      Toast.show({type: 'error', text1:"Please enter OP-TN Number"})
-      return 
     }else if(formData.price==''){
       Toast.show({type: 'error', text1:"Please enter Price"})
-      return 
-    }else if(formData.stinpend==''){
-      Toast.show({type: 'error', text1:"Please enter Stipend"})
       return 
     }else{
       setSubmitLoading(true)
@@ -229,6 +244,7 @@ const BookingScreen = ({route}) => {
           style={{marginTop: 20}}
           label={formData?.seatno}
           tempdata={seats}
+          sortingTrue={false}
           onSelect={v => {
             setFormData({...formData, seatno: v});
             log('==>v', v);

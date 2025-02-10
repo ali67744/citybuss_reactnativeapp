@@ -26,6 +26,7 @@ import moment from 'moment';
 import {ScrollView} from 'react-native';
 import EarningAdminTables from './components/EarningAdminTables';
 import EarningUserTables from './components/EarningUserTables';
+import EarningUserTables2 from './components/EarningUserTables2';
 
 const Earnings = ({}) => {
   const navigation = useNavigation();
@@ -124,7 +125,7 @@ const Earnings = ({}) => {
                 styles.tabText,
                 activeTabs === 1 ? styles.activeText : styles.inactiveText,
               ]}>
-              Africa
+              South Africa
             </Text>
           </TouchableOpacity>
         </View>
@@ -168,7 +169,7 @@ const Earnings = ({}) => {
                 res={earningsData.PassengerTicketsSoldperUser}
               />
 
-<EarningUserTables
+<EarningUserTables2
                 title="Luggage Tickets Sold per User"
                 res={earningsData.LuggageTicketsSoldperUser}
               />

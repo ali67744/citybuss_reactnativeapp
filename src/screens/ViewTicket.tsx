@@ -26,12 +26,17 @@ import Colors from '../theme/Colors';
 import { useSelector } from 'react-redux';
 const ViewTicket = ({route}) => {
   let params = route?.params?.params;
+  const comeFrom=route?.params?.comeFrom;
+  log('==>comeFrom: ', comeFrom);
   log('==>params', params);
   let shareText = '';
   const webViewRef = useRef(null);
   const [showDialoge,setShowDialoge] =useState(false);
   const [customerWhatsappNumber,setCustomerWhatsappnumber] =useState("");
   const userData = useSelector(state => state.UserDataReducer)?.UserData;
+  log('==>userData', userData);
+  const viewPrint= comeFrom=='old_booking' ? userData?.type=='1' :true;
+
   useEffect(() => {
     getInfo();
   });
@@ -169,7 +174,9 @@ const ViewTicket = ({route}) => {
         <TouchableOpacity style={styles.shareBtn} onPress={sendWhatsAppMessage}>
           <Ionicons name='logo-whatsapp' size={20}/>
         </TouchableOpacity>
-        {Number(userData?.type)<=2 && <TouchableOpacity style={styles.shareBtn} onPress={()=>print()}>
+        {
+      viewPrint
+         && <TouchableOpacity style={styles.shareBtn} onPress={()=>print()}>
           <Ionicons name='print-outline' size={20}/>
         </TouchableOpacity>}
       </View>

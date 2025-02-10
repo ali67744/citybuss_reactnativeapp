@@ -143,7 +143,7 @@ const BookingList = ({route}) => {
               activeTabs === 1 ? styles.activeText : styles.inactiveText,
             ]}
           >
-            Africa
+            South Africa
           </Text>
         </TouchableOpacity>
       </View>

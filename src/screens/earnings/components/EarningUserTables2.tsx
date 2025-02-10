@@ -21,12 +21,13 @@ const EarningUserTables = ({title='TITLE',res}) => {
         data={res}
         keyExtractor={(item) => item.full_name + item.num_of_tickets}
         renderItem={({ item }) => (
+          
           <View style={styles.row}>
             <Text style={styles.cell}>{item.full_name}</Text>
             <Text style={styles.cell}>{item.num_of_tickets}</Text>
             <Text style={styles.cell}>{item?.total+" "+item?.currency}</Text>
-            <Text style={styles.cell}>{item?.total2+" "+item?.currency_2}</Text>
-            <Text style={styles.cell}>{item?.stotal+" "+item?.sp_currency}</Text>
+            <Text style={styles.cell}>{item?.total_2+" "+item?.currency_2}</Text>
+            <Text style={styles.cell}>{item?.stotal+" "+item?.stipend_currency}</Text>
           </View>
         )}
       />

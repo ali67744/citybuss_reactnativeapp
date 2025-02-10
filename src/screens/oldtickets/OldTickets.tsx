@@ -122,7 +122,7 @@ const OldTickets = ({route}) => {
         // return
         let ss = "https://citybuscoaches.com/AppApi/print_tp/" + item?.ticket_id;
         let param={url:ss,num:"ticket_" +  item?.ticket_id,id:item?.ticket_id};
-        navigation.navigate('ViewTicket',{params:param})
+        navigation.navigate('ViewTicket',{params:param,comeFrom:'old_booking'})
     }} />;
   };
   const handleSearch=(txt)=>{
